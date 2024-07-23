@@ -46,38 +46,50 @@
             <div class="card-body">
               <h6 class="card-title">Profile Update</h6>
 
-              <form class="forms-sample" action="" method="post">
+              <form class="forms-sample" action="{{ route('admin.profile.update') }}" method="post">
+                @csrf
                 <div class="mb-3">
                   <label class="form-label">Name</label>
-                  <input type="text" class="form-control" placeholder="name" name="name">
+                  <input type="text" class="form-control" placeholder="name" name="name" value="{{ $getRecord->name}}">
                 </div>
                 <div class="mb-3">
                   <label class="form-label">Username</label>
-                  <input type="text" class="form-control" placeholder="Username" name="username">
+                  <input type="text" class="form-control" placeholder="Username" name="username"
+                    value="{{ $getRecord->username}}">
                 </div>
                 <div class="mb-3">
                   <label class="form-label">Email address</label>
-                  <input type="email" class="form-control" placeholder="Email" name="email">
+                  <input type="email" class="form-control" placeholder="Email" name="email"
+                    value="{{ $getRecord->email}}">
+                </div>
+                <div class="mb-3">
+                  <label class="form-label">Phone</label>
+                  <input type="text" class="form-control" placeholder="Phone" name="phone"
+                    value="{{ $getRecord->phone}}">
                 </div>
                 <div class="mb-3">
                   <label class="form-label">Password</label>
-                  <input type="password" class="form-control" placeholder="Password" name="password">
+                  <input type="password" class="form-control" placeholder="Password" name="password"
+                    value="{{ $getRecord->password}}">
                 </div>
                 <div class="mb-3">
                   <label class="form-label">Profile image</label>
-                  <input type="file" class="form-control" name="photo">
+                  <input type="file" class="form-control" name="photo" value="{{ $getRecord->photo}}">
                 </div>
                 <div class="mb-3">
                   <label class="form-label">Address</label>
-                  <input type="text" class="form-control" placeholder="Address" name="address">
+                  <input type="text" class="form-control" placeholder="Address" name="address"
+                    value="{{ $getRecord->address}}">
                 </div>
                 <div class="mb-3">
                   <label class="form-label">Website</label>
-                  <input type="text" class="form-control" placeholder="Website" name="website">
+                  <input type="text" class="form-control" placeholder="Website" name="website"
+                    value="{{ $getRecord->website}}">
                 </div>
                 <div class="mb-3">
                   <label class="form-label">About</label>
-                  <textarea type="text" class="form-control" placeholder="About" name="about">About</textarea>
+                  <textarea type="text" class="form-control" placeholder="About" name="about"
+                    value="{{ $getRecord->about}}">About</textarea>
                 </div>
 
                 <button type="submit" class="btn btn-primary me-2">Submit</button>
