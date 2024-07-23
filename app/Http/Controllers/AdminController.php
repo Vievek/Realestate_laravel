@@ -37,14 +37,28 @@ class AdminController extends Controller
     public function AdminProfileUpdate(Request $request)
     {
         // dd($request->all());
+        $user = request()->validate([
+            'email' => 'required|unique:users,email,' . Auth::user()->id
+        ]);
 
         $user = User::find(Auth::user()->id);
         $user->name = trim($request->name);
         $user->username = trim($request->username);
         $user->email = trim($request->email);
         $user->phone = trim($request->phone);
-        $user->password = trim($request->password);
-        $user->photo = trim($request->photo);
+
+        if (!empty($request->password)) {
+            $user->password = trim($request->password);
+        }
+
+        if (!empty($request->photo)) {
+            $file = $request->file('photo');
+            $randomStr = Str::random(30);
+            $filename = $randomStr . '.' . $file->getClientOriginalExtension();
+            $file->move('upload/', $filename);
+            $user->photo = $filename;
+        }
+
         $user->address = trim($request->address);
         $user->website = trim($request->website);
         $user->about = trim($request->about);
